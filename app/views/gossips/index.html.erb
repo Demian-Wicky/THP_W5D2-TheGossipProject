@@ -1,0 +1,12 @@
+<% @gossips.each do |gossip|%>
+  <div class="card mb-3">
+    <div class="card-body">
+      <a href="<%=user_path(gossip.user_id)%>"> <h5 class="card-title"><%= @users.find(gossip.user_id).first_name%></h5> </a>
+      <p class="card-text"><%= gossip.title %></p>
+      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(gossip.created_at)%> ago.</small></p>
+      <a href="<%=gossip_path(gossip.id)%>" class="btn btn-primary">Voir le gossip</a>
+    </div>
+  </div>
+
+
+<% end %>
