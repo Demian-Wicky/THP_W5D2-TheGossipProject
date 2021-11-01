@@ -1,0 +1,20 @@
+<div class="card mb-3">
+  <div class="card-body">
+  
+    <h5 class="card-title"><%= @gossip.title %></h5>
+
+    <a href="<%=user_path(@user.id)%>">
+      <h6 class="card-subtitle mb-2 text-muted">
+      <%= @user.first_name %> 
+      <%= @user.last_name %>
+      </h6>
+    </a>
+
+    <p class="card-text"><%= @gossip.content %></p>
+    <%# <a href="#" class="card-link">Card link</a> %>
+    
+  </div>
+</div>
+
+
+    
