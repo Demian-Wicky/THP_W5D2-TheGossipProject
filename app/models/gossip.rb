@@ -3,7 +3,10 @@ class Gossip < ApplicationRecord
     has_many :tags, through: :join_table_gossips_tags
     belongs_to :user 
   
-    validates :title,
+    validates :title, 
+      length: { in: 3..14 },
       presence: true
-  end
-  
+    validates :content,
+      presence: true
+      
+end

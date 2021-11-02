@@ -50,7 +50,8 @@ puts "#{nb_user} users created!"
 nb_gossip.times do |i|
   user = User.all.shuffle.last
   Gossip.create!(
-    title: Faker::Hipster.sentence(word_count: 2, supplemental: true),
+    # title: Faker::Hipster.sentence(word_count: 2, supplemental: true),
+    title: Faker::String.random(length: 3..14),
     content: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
     user_id: user.id,
   )

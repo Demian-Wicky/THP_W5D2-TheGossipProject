@@ -11,7 +11,7 @@ class GossipsController < ApplicationController
   end
 
   def new
-    # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
+
   end
 
   def create
