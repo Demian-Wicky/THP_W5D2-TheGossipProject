@@ -43,15 +43,17 @@ end
 puts "#{nb_user} users created!"
 
 
-
 ############################################
 # GOSSIPS
 
 nb_gossip.times do |i|
   user = User.all.shuffle.last
+  x = rand(3..14)
   Gossip.create!(
     # title: Faker::Hipster.sentence(word_count: 2, supplemental: true),
-    title: Faker::String.random(length: 3..14),
+    # title: Faker::String.random(length: 3..14),
+
+    title: Faker::Lorem.characters(number: x, min_alpha: x),
     content: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
     user_id: user.id,
   )
@@ -102,5 +104,19 @@ end
 puts "#{nb_privatemessage} private messages sent!"
 
 ############################################
+# USERS -- ANONYMOUS
+User.create!(
+    first_name: "Anonymous 👻",
+    last_name: "Anonymous",
+    description: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
+    email: "anonymous@anonymous.anonymous",
+    age: Faker::Number.within(range: 12..112),
+    city_id: City.all.shuffle.last.id,
+  )
+
+puts "Anonymous user created!"
+############################################
+
+
 
 puts "Hooray! Seeding done 👌"

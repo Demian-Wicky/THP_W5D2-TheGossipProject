@@ -14,6 +14,7 @@
   </head>
 
   <body>
+
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <a class="navbar-brand" href="<%=root_path%>">GossipProject</a>
@@ -28,6 +29,22 @@
         </div>
       </nav>
     </header>
+
+    <div class ="container">
+      <% flash.each do |att,msg|%>
+
+        <% if flash[:notice] -%>
+          <div class = "alert alert-success"><%= msg %></div>
+        <% else %>
+          <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+        
+      <% end %>
+    </div>
+
+
+    
+
     <div class ="container"><%= yield %></div>
   </body>
 </html>
