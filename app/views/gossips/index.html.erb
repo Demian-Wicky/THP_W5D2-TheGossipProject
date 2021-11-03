@@ -1,4 +1,4 @@
-<a href="new_gossip_path" 
+<a href="<%=new_gossip_path%>" 
   class="btn btn-success btn-block btn-lg mb-3" 
   role="button" 
   aria-disabled="true">
@@ -8,7 +8,14 @@
 <% @gossips.each do |gossip|%>
   <div class="card mb-3">
     <div class="card-body">
-      <a href="<%=user_path(gossip.user_id)%>"> <h5 class="card-title"><%= @users.find(gossip.user_id).first_name%></h5> </a>
+
+      <% unless gossip.user.blank? %>
+        <h5 class="card-title"><%= link_to gossip.user.first_name, user_path(id: gossip.user)%></h5>
+      <% else %>
+        <h5 class="card-title text-danger">Anonyme</h5>
+      <% end %>
+
+
       <p class="card-text"><%= gossip.title %></p>
       <p class="card-text"><small class="text-muted"><%= time_ago_in_words(gossip.created_at)%> ago.</small></p>
       <a href="<%=gossip_path(gossip.id)%>" class="btn btn-primary">Voir le gossip</a>
