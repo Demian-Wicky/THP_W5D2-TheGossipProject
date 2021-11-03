@@ -28,7 +28,7 @@ class GossipsController < ApplicationController
       redirect_to root_path
     else
 
-      flash.now[:notice] = @gossip.errors.full_messages#.to_sentence
+      flash.now[:alert] = @gossip.errors.messages
       render 'new'
     end
 

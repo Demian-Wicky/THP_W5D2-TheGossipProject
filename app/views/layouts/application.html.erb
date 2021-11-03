@@ -31,12 +31,21 @@
     </header>
 
     <div class ="container">
-      <% flash.each do |type, msg| %>
-        <div class="alert alert-danger">
-          <%= msg%>
-        </div>
+      <% flash.each do |att,msg|%>
+
+      <% message = msg.values.flatten.join(' ') %>
+      
+        <% if flash[:notice] -%>
+          <div class = "alert alert-success"><%= message %></div>
+        <% else %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% end %>
+        
       <% end %>
     </div>
+
+
+    
 
     <div class ="container"><%= yield %></div>
   </body>
