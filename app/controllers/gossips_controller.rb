@@ -20,15 +20,14 @@ class GossipsController < ApplicationController
     # puts params
     # puts "$" * 60
 
-    anonymous_user = User.find_by(first_name: "Anonymous")
+    anonymous_user = User.find_by(first_name: "Anonymous 👻")
     @gossip = Gossip.new(title: params[:title], content: params[:content], user: anonymous_user)
 
     if @gossip.save
       flash[:notice] = 'Potin enregistré !'
       redirect_to root_path
     else
-
-      flash.now[:alert] = @gossip.errors.messages
+      flash.now[:alert] = @gossip.errors.messages.values.flatten.join(' ')
       render 'new'
     end
 

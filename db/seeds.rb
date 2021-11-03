@@ -106,7 +106,7 @@ puts "#{nb_privatemessage} private messages sent!"
 ############################################
 # USERS -- ANONYMOUS
 User.create!(
-    first_name: "Anonymous",
+    first_name: "Anonymous 👻",
     last_name: "Anonymous",
     description: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
     email: "anonymous@anonymous.anonymous",

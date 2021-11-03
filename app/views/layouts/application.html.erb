@@ -33,12 +33,10 @@
     <div class ="container">
       <% flash.each do |att,msg|%>
 
-      <% message = msg.values.flatten.join(' ') %>
-      
         <% if flash[:notice] -%>
-          <div class = "alert alert-success"><%= message %></div>
+          <div class = "alert alert-success"><%= msg %></div>
         <% else %>
-          <div class="alert alert-danger"><%= message %></div>
+          <div class="alert alert-danger"><%= msg %></div>
         <% end %>
         
       <% end %>
