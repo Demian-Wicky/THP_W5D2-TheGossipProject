@@ -43,7 +43,6 @@ end
 puts "#{nb_user} users created!"
 
 
-
 ############################################
 # GOSSIPS
 
@@ -105,5 +104,19 @@ end
 puts "#{nb_privatemessage} private messages sent!"
 
 ############################################
+# USERS -- ANONYMOUS
+User.create!(
+    first_name: "Anonymous",
+    last_name: "Anonymous",
+    description: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
+    email: "anonymous@anonymous.anonymous",
+    age: Faker::Number.within(range: 12..112),
+    city_id: City.all.shuffle.last.id,
+  )
+
+puts "Anonymous user created!"
+############################################
+
+
 
 puts "Hooray! Seeding done 👌"
