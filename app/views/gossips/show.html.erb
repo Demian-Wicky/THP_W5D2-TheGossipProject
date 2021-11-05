@@ -16,7 +16,14 @@
     <h5 class="card-title"><%= @gossip.title %></h5>
 
     <p class="card-text"><%= @gossip.content %></p>
-    <%# <a href="#" class="card-link">Card link</a> %>
+
+    <a href = "<%=edit_gossip_path(params[:id])%>">
+      <button type="button" class="btn btn-dark">Editer</button>
+    </a>
+
+    <a href="<%=gossip_path(@gossip.id)%>" data-confirm="Êtes-vous sur de vouloir supprimer le gossip ?" data-method="delete">
+      <button type="button" class="btn btn-danger">Supprimer</button>
+    </a>
     
   </div>
 </div>
