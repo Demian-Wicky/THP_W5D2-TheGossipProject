@@ -15,10 +15,10 @@ class GossipsController < ApplicationController
 
   def create
     
-    # puts "$" * 60
-    # puts "ceci est le contenu de params :"
-    # puts params
-    # puts "$" * 60
+              puts "*" * 60
+              puts "CONTENU DE PARAMS :"
+              puts params
+              puts "*" * 60
 
     anonymous_user = User.find_by(first_name: "Anonymous 👻")
     @gossip = Gossip.new(title: params[:title], content: params[:content], user: anonymous_user)
@@ -28,24 +28,40 @@ class GossipsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = @gossip.errors.messages.values.flatten.join(' ')
-      render 'new'
+      render :new
     end
 
   end
 
   def edit
-    # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+    @gossip = Gossip.find(params[:id])
   end
 
   def update
-    # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
-    # pour info, le contenu de ce formulaire sera accessible dans le hash params
-    # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+    puts "*" * 60
+    puts params.inspect
+    puts "*" * 60
+
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(title:params[:title], content:params[:content])
+      flash[:notice] = 'Potin modifié !'
+      redirect_to @gossip
+    else
+      flash.now[:alert] = @gossip.errors.messages.values.flatten.join(' ')
+      render :edit
+    end
+
   end
 
   def destroy
-    # Méthode qui récupère le potin concerné et le détruit en base
-    # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+    puts "*" * 60
+    puts "CONTENU DE PARAMS :"
+    puts params
+    puts "*" * 60
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    flash[:notice] = 'Potin supprimé !'
+    redirect_to root_path
   end
 
 end

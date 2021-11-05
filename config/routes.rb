@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/team', to: 'static_pages#team'
   get '/welcome/:first_name', to: 'greets#greet'
 
-  resources :gossips, only: [:index, :show, :new, :create]
+  resources :gossips
   resources :users, only: [:show]
   resources :cities, only: [:show]
 
