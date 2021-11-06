@@ -4,6 +4,7 @@ Gossip.delete_all
 JoinTableGossipsTag.delete_all
 Tag.delete_all
 PrivateMessage.delete_all
+Comment.delete_all
 
 
 ############################################
@@ -15,6 +16,7 @@ nb_gossip = 20
 nb_tag = 10
 nb_jointablegossipstag = 60
 nb_privatemessage = 60
+nb_comment = 80
 
 
 ###########################################
@@ -115,6 +117,22 @@ User.create!(
   )
 
 puts "Anonymous user created!"
+
+############################################
+# USERS -- ANONYMOUS
+nb_comment.times do |i|
+  user = User.all.shuffle.last
+  gossip = Gossip.all.shuffle.last
+  Comment.create!(
+    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
+    user_id: user.id,  
+    gossip_id: gossip.id,
+  )
+end
+
+puts "Comments created!"
+
+
 ############################################
 
 
