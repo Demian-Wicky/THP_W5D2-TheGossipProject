@@ -26,5 +26,20 @@
     </a>
     
   </div>
+  
 </div>
+
+
+<% @comments.each do |comment|%>
+  <div class="card mb-3 border-0" style="background-color:#F0F1F3">
+    <div class="card-body">
+      <a href="<%=user_path(id: comment.user)%>">
+        <p class="card-text"><%= comment.user.first_name %> <%= comment.user.last_name %></p>
+      </a>
+      <p class="card-text"><%= comment.content %></p>
+    </div>
+  </div>
+
+
+<% end %>
 
