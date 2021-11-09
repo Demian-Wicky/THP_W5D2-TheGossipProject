@@ -36,6 +36,7 @@
       <a href="<%=user_path(id: comment.user)%>">
         <p class="card-text"><%= comment.user.first_name %> <%= comment.user.last_name %></p>
       </a>
+      <p class="card-text"><small class="text-muted"><%= time_ago_in_words(comment.created_at)%> ago</small></p>
       <p class="card-text"><%= comment.content %></p>
     </div>
   </div>
