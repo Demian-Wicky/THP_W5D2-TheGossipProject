@@ -30,13 +30,26 @@
 </div>
 
 
-<h3>Ajouter un commentaire</h3>
 
-<%= form_for @comment do |f| %>
-  Ton commentaire: <%= f.text_field :content %><br />
+<%= form_for @comment, :html => {:class => 'mt-5 mb-5',} do |f| %>
+
+  <h5>Ajouter un commentaire</h5>
+
+  <div class="form-group">
+    <%= f.text_field :content , class: 'form-control' , placeholder: "blablabla"%>
+  </div>
+
   <%= f.hidden_field :gossip_id, :value => params[:id] %>
-  <%= f.submit %>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary form-control">Créer un commentaire</button>
+  </div>
 <% end %>
+<hr>
+
+
+
+
 
 <% @gossip.comments.order('created_at DESC').each do |comment|%>
   <div class="card mb-3 border-0" style="background-color:#F0F1F3">
