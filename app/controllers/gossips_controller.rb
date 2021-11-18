@@ -1,26 +1,24 @@
 class GossipsController < ApplicationController
 
+
   def index
     @gossips = Gossip.order('created_at DESC')
   end
 
+
   def show
     @gossip = Gossip.find(params[:id])
-    @user = User.find_by(id: @gossip.user)
-    @comments = @gossip.comments
+
+    @comment = Comment.new
   end
+
 
   def new
     @gossip = Gossip.new
   end
 
-  def create
-    
-              puts "*" * 60
-              puts "CONTENU DE PARAMS :"
-              puts params
-              puts "*" * 60
 
+  def create
     anonymous_user = User.find_by(first_name: "Anonymous 👻")
     @gossip = Gossip.new(title: params[:title], content: params[:content], user: anonymous_user)
 
@@ -34,16 +32,15 @@ class GossipsController < ApplicationController
 
   end
 
+
   def edit
     @gossip = Gossip.find(params[:id])
   end
 
-  def update
-    puts "*" * 60
-    puts params.inspect
-    puts "*" * 60
 
+  def update
     @gossip = Gossip.find(params[:id])
+
     if @gossip.update(title:params[:title], content:params[:content])
       flash[:notice] = 'Potin modifié !'
       redirect_to @gossip
@@ -54,15 +51,13 @@ class GossipsController < ApplicationController
 
   end
 
+
   def destroy
-    puts "*" * 60
-    puts "CONTENU DE PARAMS :"
-    puts params
-    puts "*" * 60
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     flash[:notice] = 'Potin supprimé !'
     redirect_to root_path
   end
+
 
 end
