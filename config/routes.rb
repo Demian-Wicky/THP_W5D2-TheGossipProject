@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   get 'comments/create'
   get 'cities/show'
   root to: 'gossips#index'
@@ -11,7 +14,10 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :comments
+
   resources :users, only: [:show]
   resources :cities, only: [:show]
+  
+  resources :sessions, only: [:new, :create, :destroy]
 
 end
