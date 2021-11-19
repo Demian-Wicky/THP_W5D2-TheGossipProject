@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'commmentaire enregistré !'
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = @comment.errors.messages.flatten.join(' ')
+      flash[:alert] = @comment.errors.messages.values.flatten.join(' ')
       redirect_back(fallback_location: root_path)
     end
   end
